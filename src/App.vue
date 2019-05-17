@@ -1,8 +1,24 @@
 <template>
   <section id="app">
-    <router-view/>
+    <el-container>
+      <el-header>
+        <MyHeader></MyHeader>
+      </el-header>
+      <el-main>
+        <router-view/>
+      </el-main>
+      <el-footer>Footer</el-footer>
+    </el-container>
   </section>
 </template>
+<script>
+import MyHeader from '@/components/Header.vue'
+export default {
+  components:{
+    MyHeader
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -12,7 +28,7 @@
   text-align: center;
   color: #2c3e50;
 }
-#app::-webkit-scrollbar {
-        display: none;
-    }
+.el-header{
+  background-color: rgb(84, 92, 100)
+}
 </style>
