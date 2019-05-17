@@ -1,6 +1,6 @@
 <template>
   <div class="Home_Page">
-    <el-button>111</el-button>
+    首页
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 // @ is an alias to /src
 
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
 
   },
