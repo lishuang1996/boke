@@ -7,7 +7,7 @@
     @select="handleSelect"
     background-color="#545c64"
     text-color="#fff"
-    router=true
+    :router="true"
     active-text-color="#ffd04b">
     <el-menu-item v-for="(item,index) of menu_arr" :key="index" :index="item.router">{{item.name}}</el-menu-item>
   </el-menu>
