@@ -9,6 +9,15 @@ Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
   next()
 })
+//全局混合
+import mixins from '@/mixins/mixins'
+Vue.mixin(mixins)
+//axios引入
+import Api from '@/../plugins/axios.js';
+Vue.prototype.$api = Api;
+//from表单规则引入
+import Rule from '@/../plugins/rule.js';
+Vue.prototype.$rule = Rule;
 new Vue({
   router,
   store,
