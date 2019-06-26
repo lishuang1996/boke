@@ -1,13 +1,13 @@
 <template>
   <section id="app">
     <el-container>
-      <el-header>
+      <el-header v-if="$route.path != '/'">
         <MyHeader></MyHeader>
       </el-header>
       <el-main>
         <router-view/>
       </el-main>
-      <el-footer>Footer</el-footer>
+      <el-footer v-if="$route.path != '/'">Footer</el-footer>
     </el-container>
   </section>
 </template>

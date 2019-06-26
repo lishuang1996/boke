@@ -15,6 +15,7 @@ export default {
   components: {
   },
   created(){
+
   },
   methods:{
     
@@ -25,13 +26,6 @@ export default {
 .Home_Page{
   width: 100%;
 }
-.box{
-  display: flex;
-  flex-wrap:wrap;
-}
-.boxMin{
-  width: 200px;
-  margin-left: 20px;
-}
+
 </style>
 

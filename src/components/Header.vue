@@ -21,7 +21,7 @@
         activeIndex:'/',
         menu_arr:[{
           name:'首页',
-          router:'/',
+          router:'/Home',
         },{
           name:'学无止境',
           router:'/Study',
