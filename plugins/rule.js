@@ -11,10 +11,10 @@ export default {
       return callback()
     }
   },
-  Tel: (rule, value, callback) => {
+  Phone: (rule, value, callback) => {
     let tel = /^1[345789]\d{9}$/
     if (!value) {
-      return callback()
+      return callback(new Error('请填写手机号码'))
     }
     if (!tel.test(value)) {
       return callback(new Error('请填写正确手机号码'))

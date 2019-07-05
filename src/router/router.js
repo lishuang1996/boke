@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import demo from './module/demo'
 Vue.use(Router)
 
 export default new Router({
@@ -10,27 +10,35 @@ export default new Router({
     {
       path: '/',
       name: 'Index',
-      component: () => import('@/views/index.vue')
+      component: () => import('@/views/index.vue'),
+      children: [
+          ...demo
+      ]
     },
     {
-      path: '/Home',
-      name: 'Home',
-      component: () => import('@/views/Home.vue')
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/login/login.vue')
     },
     {
-      path: '/Study',
-      name: 'Study',
-      component: () => import('@/views/Study.vue')
+      path: '/register',
+      name: 'register',
+      component: () => import('@/views/login/register.vue')
     },
     {
-      path: '/Self_Introduction',
-      name: 'Self_Introduction',
-      component: () => import('@/views/Self_Introduction.vue')
+      path: '/401',
+      name: '401',
+      component: () => import('@/views/error/401.vue')
     },
     {
-      path: '/Message_Board',
-      name: 'Message_Board',
-      component: () => import('@/views/Message_Board.vue')
-    }
+      path: '/404',
+      name: '404',
+      component: () => import('@/views/error/404.vue')
+    },
+    {
+      path: '/500',
+      name: '500',
+      component: () => import('@/views/error/500.vue')
+    },
   ]
 })

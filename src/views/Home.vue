@@ -1,5 +1,6 @@
 <template>
   <div class="Home_Page">
+    123
   </div>
 </template>
 
@@ -23,9 +24,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.Home_Page{
-  width: 100%;
-}
+
 
 </style>
 
