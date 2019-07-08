@@ -8,7 +8,7 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/Home',
       name: 'Index',
       component: () => import('@/views/index.vue'),
       children: [
@@ -16,7 +16,7 @@ export default new Router({
       ]
     },
     {
-      path: '/login',
+      path: '/',
       name: 'login',
       component: () => import('@/views/login/login.vue')
     },

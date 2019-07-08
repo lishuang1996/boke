@@ -11,16 +11,17 @@ import './assets/less/main.less'
 //全局混合
 import mixins from '@/mixins/mixins'
 Vue.mixin(mixins)
-//axios引入
-import Api from '@/../plugins/axios.js';
-Vue.prototype.$api = Api;
 //from表单规则引入
 import Rule from '@/../plugins/rule.js';
 Vue.prototype.$rule = Rule;
 //全局判断是否登录
 router.beforeEach((to,from,next)=>{
+  console.log(from)
+  console.log(to)
   if(to.meta.requireAuth){
     next({path:'/401'})
+  }else if(!to.name){
+    next({path:'/404'})
   }else{
     next()
   }

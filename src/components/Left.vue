@@ -9,9 +9,25 @@
       background-color="#384150"
       text-color="#fff"
       active-text-color="#ffd04b"
-      :router='false'
+      :router='true'
     >
-      <el-submenu index="1">
+      <!-- <component v-for="(item,index) of menu_arr" :key="index" :index="item.src" :is="item.ItemType==1?'el-submenu':'el-menu-item'">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span>{{item.Name}}</span>
+        </template>
+        <component v-if="item.ItemType == 1" v-for="(item_a,index_a) of item.Children" :index="item_a.src" :key="index_a" :is="item_a.ItemType==1?'el-submenu':'el-menu-item-group'">
+          <div>
+            <el-menu-item v-if="item_a.ItemType == 2" :index="item_a.src">{{item_a.Name}}</el-menu-item>
+          </div>
+          <template v-if="item_a.ItemType == 1" slot="title">
+            <span>{{item_a.Name}}</span>
+          </template>
+          
+          <el-menu-item v-for="(item_b,index_b) of item_a.Children" :index="item_b.src" :key="index_b">{{item_b.Name}}</el-menu-item>
+        </component>
+      </component> -->
+     <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
           <span>导航一</span>
@@ -44,23 +60,35 @@
 export default {
   data() {
     return {
-      activeIndex: "/Home",
       menu_arr: [
         {
-          name: "首页",
-          router: "/Home"
-        },
-        {
-          name: "学无止境",
-          router: "/Study"
-        },
-        {
-          name: "个人介绍",
-          router: "/Self_Introduction"
-        },
-        {
-          name: "留言板",
-          router: "/Message_Board"
+          Name:'员工管理',
+          ItemType:'1',
+          src:'1',
+          Children:[
+            {
+              Name:'在职员工',
+              ItemType:'2',
+              src:'1-1'
+            },
+            {
+              Name:'离职员工',
+              ItemType:'2',
+              src:'1-2'
+            },
+            {
+              Name:'企业通讯录',
+              ItemType:'1',
+              src:'2',
+              children:[
+                {
+                  Name:'在职员工',
+                  ItemType:'2',
+                  src:'4'
+                }
+              ]
+            }
+          ]
         }
       ]
     };
@@ -86,7 +114,5 @@ li{
 .el-menu-item-group li{
   padding-left: 50px !important;
 }
-.el-submenu div{
-  padding-left: 50px !important;
-}
+
 </style>

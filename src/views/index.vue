@@ -1,5 +1,5 @@
 <template>
-  <el-container class="h100">
+  <el-container class="h100" style="background-color: #eee">
     <el-header>
       <MyHeader></MyHeader>
     </el-header>
@@ -35,5 +35,12 @@ export default {
 .el-aside{
   height: 100%;
   background-color: #384150;
+}
+.el-main{
+  background-color: #fff;
+  margin: 20px;
+}
+.el-footer{
+  background-color: #fff;
 }
 </style>
