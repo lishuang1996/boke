@@ -10,6 +10,9 @@ export default new Router({
     {
       path: '/Home',
       name: 'Index',
+      meta:{
+        requireAuth:true
+      },
       component: () => import('@/views/index.vue'),
       children: [
           ...demo

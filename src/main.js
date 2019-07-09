@@ -4,6 +4,7 @@ import router from '@/router/router'
 import store from '@/store/store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import {getUser} from '@/../plugins/token'
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 //引入全局less
@@ -16,15 +17,15 @@ import Rule from '@/../plugins/rule.js';
 Vue.prototype.$rule = Rule;
 //全局判断是否登录
 router.beforeEach((to,from,next)=>{
-  console.log(from)
-  console.log(to)
-  if(to.meta.requireAuth){
-    next({path:'/401'})
-  }else if(!to.name){
-    next({path:'/404'})
-  }else{
-    next()
-  }
+    console.log(getUser())
+    console.log(to)
+    if(!getUser()&&to.meta.requireAuth){
+      console.log(1)
+      next({path:'/'})
+    }else{
+      next()
+    }
+    
   
 })
 new Vue({

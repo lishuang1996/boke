@@ -20,11 +20,27 @@
 <script>
 import MyHeader from '@/components/Header.vue'
 import MyLeft from '@/components/Left.vue'
+import {getUser} from '@/../plugins/token'
 export default {
   components:{
     MyHeader,
     MyLeft
-  }
+  },
+  created(){
+    this.RecordLogin()
+  },
+  methods:{
+    //vuex记录登录状态
+    RecordLogin(){
+      if(!this.GetStoreState('UserData')){
+        if(getUser()){
+          this.SetStore('SetUserData',getUser())
+        }else{
+          this.$router.push('/')
+        }
+      }
+    }
+  },
 }
 </script>
 
