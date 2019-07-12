@@ -1,58 +1,22 @@
 <template>
   <div>
-    <el-menu
-      default-active="2"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      :default-active="'/Self_Introduction'"
-      background-color="#384150"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-      :router='true'
-    >
-      <!-- <component v-for="(item,index) of menu_arr" :key="index" :index="item.src" :is="item.ItemType==1?'el-submenu':'el-menu-item'">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>{{item.Name}}</span>
-        </template>
-        <component v-if="item.ItemType == 1" v-for="(item_a,index_a) of item.Children" :index="item_a.src" :key="index_a" :is="item_a.ItemType==1?'el-submenu':'el-menu-item-group'">
-          <div>
-            <el-menu-item v-if="item_a.ItemType == 2" :index="item_a.src">{{item_a.Name}}</el-menu-item>
-          </div>
-          <template v-if="item_a.ItemType == 1" slot="title">
-            <span>{{item_a.Name}}</span>
-          </template>
-          
-          <el-menu-item v-for="(item_b,index_b) of item_a.Children" :index="item_b.src" :key="index_b">{{item_b.Name}}</el-menu-item>
-        </component>
-      </component> -->
-     <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <el-menu-item index="/Study">选项1</el-menu-item>
-          <el-menu-item index="/Self_Introduction">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group>
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
-    </el-menu>
+    <el-menu class="el-menu-vertical-demo" @open="handleOpen" background-color="#384150" @close="handleClose" text-color="#fff" active-text-color="#ffd04b" :router="true">
+			<el-submenu v-for="(item,index) in menu_arr" :index="item.Name" :key="index">
+				<template slot="title">
+					<!-- <i class="menu_icon " :class="'menu_icon_'+item.FeaturesModuleId"></i> -->
+					<span slot="title">{{item.Name}}</span>
+				</template>
+				<el-menu-item-group v-for="(item_,index_) in item.Children" :key="index_" v-if="item_.Children.length==0">
+					<el-menu-item :index="item_.harf">{{item_.Name}}</el-menu-item>
+				</el-menu-item-group>
+				<el-submenu :index="item_.Name" v-for="(item_,index_) in item.Children" :key="index_" v-if="item_.Children.length>0">
+					<span slot="title">{{item_.Name}}</span>
+					<el-menu-item-group v-for="(item_c,index_c) in item_.Children" :key="index_c">
+						<el-menu-item :index="item_c.harf">{{item_c.Name}}</el-menu-item>
+					</el-menu-item-group>
+				</el-submenu>
+			</el-submenu>
+		</el-menu>
   </div>
 </template>
 
@@ -63,30 +27,31 @@ export default {
       menu_arr: [
         {
           Name:'员工管理',
-          ItemType:'1',
-          src:'1',
+          harf:'1',
           Children:[
             {
               Name:'在职员工',
-              ItemType:'2',
-              src:'1-1'
+              harf:'1-1',
+              Children:[]
             },
             {
               Name:'离职员工',
-              ItemType:'2',
-              src:'1-2'
+              harf:'1-2',
+              Children:[{
+                  Name:'在职员工',
+                  harf:'2-1',
+                  Children:[]
+                },
+                {
+                  Name:'离职员工',
+                  harf:'2-2',
+                  Children:[]
+                },]
             },
             {
               Name:'企业通讯录',
-              ItemType:'1',
-              src:'2',
-              children:[
-                {
-                  Name:'在职员工',
-                  ItemType:'2',
-                  src:'4'
-                }
-              ]
+              harf:'2',
+              Children:[]
             }
           ]
         }
@@ -111,8 +76,17 @@ export default {
 li{
   text-align: left;
 }
-.el-menu-item-group li{
-  padding-left: 50px !important;
-}
-
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+		width: 215px;
+		min-height: 400px;
+		position: relative;
+		left: 1px;
+		height: 100%;
+		overflow: scroll;
+	}
+	
+	::-webkit-scrollbar {
+		/*隐藏滚轮*/
+		display: none;
+	}
 </style>
