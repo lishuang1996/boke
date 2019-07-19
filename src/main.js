@@ -16,17 +16,19 @@ Vue.mixin(mixins)
 import Rule from '@/../plugins/rule.js';
 Vue.prototype.$rule = Rule;
 //全局判断是否登录
+if(getUser()){
+  store.commit('SetUserData',getUser())
+}
 router.beforeEach((to,from,next)=>{
-    console.log(getUser())
-    console.log(to)
-    if(!getUser()&&to.meta.requireAuth){
-      console.log(1)
+    if(!store.state.UserData&&to.meta.requireAuth){
       next({path:'/'})
+      Vue.prototype.$message({
+        type: "error",
+        message: "身份已过期，请重新登录"
+     });
     }else{
       next()
     }
-    
-  
 })
 new Vue({
   router,

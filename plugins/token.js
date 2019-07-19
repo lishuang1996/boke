@@ -7,7 +7,7 @@ import Cookies from 'vue-cookies'
 export const TOKEN_KEY = 'Token'
 export const TOKEN_USER = 'UserDataZ'
 export const setUser = (data) => {
-	Cookies.set(TOKEN_USER,JSON.stringify(data));
+	Cookies.set(TOKEN_USER,JSON.stringify(data),{expires:1});
 }
 export const getUser = () => {
 	const UserData = Cookies.get(TOKEN_USER)

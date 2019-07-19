@@ -1,16 +1,18 @@
 <template>
   <div class="Home_Page">
-    123
+    <button @click="log">123</button>
+    {{aaa}}
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import {login} from '@/../plugins/api.js'
 export default {
   name: 'Home',
   data(){
     return{
-      
+      aaa:''
     }
   },
   components: {
@@ -19,7 +21,11 @@ export default {
 
   },
   methods:{
-    
+    log(){
+      login().then(res=>{
+        this.aaa = res
+      })
+    }
   }
 }
 </script>

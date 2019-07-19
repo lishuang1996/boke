@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import {setUser,getUser,clearUser} from '@/../plugins/token'
   export default {
     data(){
       return{}
@@ -27,9 +28,10 @@
       MenuClick(name){
         console.log(name)
         if(name == 'loginout'){
-
+          clearUser()
+          this.SetStore('DelUserData',123)
+          this.$router.push('/Home')
         }
-        
       }
     }
   }

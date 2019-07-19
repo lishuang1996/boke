@@ -27,11 +27,11 @@ export default {
       menu_arr: [
         {
           Name:'员工管理',
-          harf:'1',
+          harf:'',
           Children:[
             {
               Name:'在职员工',
-              harf:'1-1',
+              harf:'/Study',
               Children:[]
             },
             {
@@ -77,7 +77,7 @@ li{
   text-align: left;
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-		width: 215px;
+		width: 214px;
 		min-height: 400px;
 		position: relative;
 		left: 1px;

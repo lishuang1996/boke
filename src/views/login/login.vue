@@ -31,8 +31,8 @@ export default {
   methods: {
     //判断是否是否存在cookies
     ExistCookies(){
-      if(getUser()){
-         this.$router.push('/Home')
+      if(this.$store.state.UserData){
+        this.$router.push('/Home')
       }
     },
     //登录
