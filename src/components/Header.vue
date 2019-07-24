@@ -7,7 +7,7 @@
       <div class="headerimg"></div>
       <el-dropdown trigger="click" class="user_name" @command="MenuClick">
         <span class="el-dropdown-link">
-          猪儿子虫<i class="el-icon-arrow-down el-icon--right"></i>
+          {{UserData.Name}}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="personal">个人中心</el-dropdown-item>
@@ -24,13 +24,18 @@ import {setUser,getUser,clearUser} from '@/../plugins/token'
     data(){
       return{}
     },
+    computed: {
+      UserData(){
+        return this.$store.state.UserData
+      }
+    },
     methods:{
       MenuClick(name){
         console.log(name)
         if(name == 'loginout'){
           clearUser()
-          this.SetStore('DelUserData',123)
-          this.$router.push('/Home')
+          this.SetStore('DelUserData')
+          this.$router.push('/')
         }
       }
     }

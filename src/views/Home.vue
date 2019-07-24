@@ -22,7 +22,11 @@ export default {
   },
   methods:{
     log(){
-      login().then(res=>{
+      let form={
+        User_Name:'admin',
+        Password:'123456',
+      }
+      login(form).then(res=>{
         this.aaa = res
       })
     }

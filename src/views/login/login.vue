@@ -2,10 +2,10 @@
   <div class="login_box">
     <el-form ref="form" class="login_from" :model="form">
       <el-form-item>
-        <el-input v-model="form.UserName" placeholder="请输入账号"></el-input>
+        <el-input v-model="form.User_Name" placeholder="请输入账号"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input v-model="form.PassWord" type="password" placeholder="请输密码"></el-input>
+        <el-input v-model="form.Password" type="password" placeholder="请输密码"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button @click="FromDispose">登录</el-button>
@@ -16,12 +16,13 @@
 
 <script>
 import {setUser,getUser} from '@/../plugins/token'
+import {login} from '@/../plugins/api.js'
 export default {
   data() {
     return {
       form: {
-        UserName: "",
-        PassWord: ""
+        User_Name: "",
+        Password: ""
       }
     };
   },
@@ -38,14 +39,17 @@ export default {
     //登录
     FromDispose(){
       this.submitForm('form').then(res=>{
-        if(this.form.UserName == 'admin'&&this.form.PassWord=='123456'){
-          setUser(123)
-          this.SetStore('SetUserData',123)
-          this.$router.push('/Home')
-          this.$message.success('登录成功');
-        }else{
-          this.$message.error('账号或密码错误');
-        }
+        login(this.form).then(res=>{
+          if(res.code == 10000){
+            setUser(res.data)
+            this.SetStore('SetUserData',res.data)
+            this.$router.push('/Home')
+            this.$message.success(res.msg);
+          }else{
+            this.$message.error(res.msg);
+          }
+          
+        })
       })
     }
   }
