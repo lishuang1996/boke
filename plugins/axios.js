@@ -25,7 +25,6 @@ function apiAxios(method, url, params) {
       data: method === 'POST' || method === 'PUT' ? params : null,
       params: method === 'GET' || method === 'DELETE' ? params : null,
     }).then(function (res) {
-      console.log(res)
       resolve(res.data);
     }).catch(function (err) {
       reject(err);
@@ -34,50 +33,4 @@ function apiAxios(method, url, params) {
   
 }
 
-export default {
-  get: function (url, params) {
-    return new Promise((resolve, reject)=>{
-      apiAxios('GET', url, params)
-      .then(res=>{
-        console.log(res)
-        resolve(res)
-      })
-      .catch(err=>{
-        reject(err)
-      })
-    })
-  },
-  post: function (url, params) {
-    return new Promise((resolve, reject)=>{
-      apiAxios('POST', url, params)
-      .then(res=>{
-        resolve(res)
-      })
-      .catch(err=>{
-        reject(err)
-      })
-    })
-  },
-  put: function (url, params) {
-    return new Promise((resolve, reject)=>{
-      apiAxios('PUT', url, params)
-      .then(res=>{
-        resolve(res)
-      })
-      .catch(err=>{
-        reject(err)
-      })
-    })
-  },
-  delete: function (url, params) {
-    return new Promise((resolve, reject)=>{
-      apiAxios('DELETE', url, params)
-      .then(res=>{
-        resolve(res)
-      })
-      .catch(err=>{
-        reject(err)
-      })
-    })
-  }
-}
+export default apiAxios

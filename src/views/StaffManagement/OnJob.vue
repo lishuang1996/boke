@@ -1,13 +1,12 @@
 <template>
   <div>
-    留言板
+    2
   </div>
 </template>
 
 <script>
   export default {
-    name:'Message_Board'
-    
+    name:'OnJob'
   }
 </script>
 

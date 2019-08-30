@@ -1,12 +1,12 @@
 <template>
   <div>
-    个人介绍
+    3
   </div>
 </template>
 
 <script>
   export default {
-    name:'Self_Introduction'
+    name:'OutJob'
   }
 </script>
 

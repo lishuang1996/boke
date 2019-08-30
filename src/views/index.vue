@@ -9,7 +9,7 @@
       </el-aside>
       <el-container>
         <el-main>
-          <router-view/>
+          <MyTabs></MyTabs>
         </el-main>
         <el-footer>Footer</el-footer>
       </el-container>
@@ -20,11 +20,13 @@
 <script>
 import MyHeader from '@/components/Header.vue'
 import MyLeft from '@/components/Left.vue'
+import MyTabs from '@/components/Tabs.vue'
 import {getUser} from '@/../plugins/token'
 export default {
   components:{
     MyHeader,
-    MyLeft
+    MyLeft,
+    MyTabs
   },
   created(){
     this.RecordLogin()
@@ -55,8 +57,13 @@ export default {
 .el-main{
   background-color: #fff;
   margin: 20px;
+  padding: 0;
 }
 .el-footer{
   background-color: #fff;
+}
+.el-aside::-webkit-scrollbar {
+  /*隐藏滚轮*/
+  display: none;
 }
 </style>

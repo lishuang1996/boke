@@ -20,13 +20,17 @@ if(getUser()){
   store.commit('SetUserData',getUser())
 }
 router.beforeEach((to,from,next)=>{
-    if(!store.state.UserData&&to.meta.requireAuth){
+    if(!store.state.UserData&&!to.meta.requireAuth){
       next({path:'/'})
       Vue.prototype.$message({
         type: "error",
         message: "身份已过期，请重新登录"
      });
     }else{
+      console.log(123)
+      if(!to.meta.requireAuth){
+        store.commit('AddTabs',to)
+      }
       next()
     }
 })

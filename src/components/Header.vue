@@ -31,9 +31,9 @@ import {setUser,getUser,clearUser} from '@/../plugins/token'
     },
     methods:{
       MenuClick(name){
-        console.log(name)
         if(name == 'loginout'){
           clearUser()
+          sessionStorage.setItem('TabsArr','')
           this.SetStore('DelUserData')
           this.$router.push('/')
         }

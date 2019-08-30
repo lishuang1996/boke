@@ -1,12 +1,12 @@
 <template>
   <div>
-    学习
+    1
   </div>
 </template>
 
 <script>
   export default {
-    name:'Study'
+    name:'AddressList'
   }
 </script>
 

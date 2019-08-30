@@ -12,7 +12,6 @@ export default{
             },
             on:{
               'el-input': function (event) {
-                console.log(event)
                 self.$emit('el-input', event.target.value)
               }
             }

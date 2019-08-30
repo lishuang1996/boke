@@ -33,7 +33,7 @@ export default {
     //判断是否是否存在cookies
     ExistCookies(){
       if(this.$store.state.UserData){
-        this.$router.push('/Home')
+        this.$router.push('/home')
       }
     },
     //登录
@@ -43,7 +43,7 @@ export default {
           if(res.code == 10000){
             setUser(res.data)
             this.SetStore('SetUserData',res.data)
-            this.$router.push('/Home')
+            this.$router.push('/home')
             this.$message.success(res.msg);
           }else{
             this.$message.error(res.msg);

@@ -1,1 +1,1 @@
-VUE_APP_API = http://www.lishuang96.com:200
+VUE_APP_API = https://www.lishuang96.com

@@ -1,2 +1,2 @@
-import Api from '@/../plugins/axios.js';
-export const login = async data => Api.post('/login', data);
+import apiAxios from '@/../plugins/axios.js';
+export const login = async data => apiAxios('POST','/api/login', data);

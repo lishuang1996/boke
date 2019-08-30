@@ -1,34 +1,34 @@
 export default [
   {
-    path: '/Home',
+    path: '/home',
     name: 'Home',
     meta:{
-      requireAuth:true
+      title:'首页'
     },
     component: () => import('@/views/Home.vue')
   },
   {
-    path: '/Study',
-    name: 'Study',
+    path: '/onjob',
+    name: 'OnJob',
     meta:{
-      requireAuth:true
+      title:'在职员工'
     },
-    component: () => import('@/views/Study.vue')
+    component: () => import('@/views/StaffManagement/OnJob.vue')
   },
   {
-    path: '/Self_Introduction',
-    name: 'Self_Introduction',
+    path: '/outjob',
+    name: 'OutJob',
     meta:{
-      requireAuth:true
+      title:'离职员工'
     },
-    component: () => import('@/views/Self_Introduction.vue')
+    component: () => import('@/views/StaffManagement/OutJob.vue')
   },
   {
-    path: '/Message_Board',
-    name: 'Message_Board',
+    path: '/addresslist',
+    name: 'AddressList',
     meta:{
-      requireAuth:true
+      title:'企业通讯录'
     },
-    component: () => import('@/views/Message_Board.vue')
+    component: () => import('@/views/StaffManagement/AddressList.vue')
   }
 ]
