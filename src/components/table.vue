@@ -70,6 +70,7 @@ export default {
           zip: 200333,
           jy: false,
           time:'',
+          
           checkbox:[]
         }
       ]
