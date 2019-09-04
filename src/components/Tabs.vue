@@ -15,8 +15,8 @@
         :name="item.path"
         :closable="item.closShow"
       >
-        <router-view/>
       </el-tab-pane>
+      <router-view />
     </el-tabs>
   </div>
 </template>

@@ -1,49 +1,31 @@
 <template>
-  <div class="Home_Page">
-    <MyTable :tableHeader="tableHeader"></MyTable>
+  <div>
+    <div v-for="(item,index) of arr" :key="index">
+      <mydiv v-if="item.show==false?false:true">{{item.render(form)}}</mydiv>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import { login } from "@/../plugins/api.js";
-import Vue from "vue";
-import MyTable from "@/components/Table.vue";
 import Myitem from "@/assets/js/item.js";
 export default {
-  name: "Home",
   data() {
     return {
-      tableHeader: [
+      dialogVisible: false,
+      form: {
+        checkbox: [],
+        time: "",
+        jy: false,
+        city: "",
+        city1: ""
+      },
+      arr: [
         {
-          prop: "date",
-          label: "日期",
-          width: ""
-        },
-        {
-          prop: "name",
-          label: "姓名",
-          width: ""
-        },
-        {
-          prop: "province",
-          label: "省份",
-          width: ""
-        },
-        {
-          prop: "city",
-          label: "市区",
-          width: ""
-        },
-        {
-          prop: "checkbox",
-          label: "地址",
-          width: "200",
-          render: row => {
+          render: form => {
             Myitem.Checkbox_({
-              form: row,
+              form: form,
               prop: "checkbox",
-              checkbox:[
+              checkbox: [
                 {
                   value: "黄金糕",
                   label: "选项1"
@@ -52,7 +34,7 @@ export default {
                   value: "双皮奶",
                   label: "选项2",
                   disabled: true
-                },
+                }
               ]
             }).then(res => {
               console.log(res);
@@ -60,12 +42,10 @@ export default {
           }
         },
         {
-          prop: "zip",
-          label: "邮编",
-          width: "250",
-          render: row => {
+          show: false,
+          render: form => {
             Myitem.Date_({
-              form: row,
+              form: form,
               prop: "time"
             }).then(res => {
               console.log(res);
@@ -73,40 +53,30 @@ export default {
           }
         },
         {
-          prop: "jy",
-          label: "是否禁用",
-          width: "",
-          render: row => {
+          render: form => {
             Myitem.Switch_({
-              form: row,
+              form: form,
               prop: "jy"
             }).then(res => {
-              console.log(res);
+              this.arr[1].show = res.data;
             });
           }
         },
         {
-          prop: "zip",
-          label: "姓名",
-          width: "200",
-          render: row => {
+          render: form => {
             Myitem.Input_({
-              form: row,
+              form: form,
               prop: "city",
-              append:'元'
             }).then(res => {
-              console.log(res);
+
             });
           }
         },
         {
-          prop: "jy",
-          label: "姓名",
-          width: "200",
-          render: row => {
+          render: form => {
             Myitem.Select_({
-              form: row,
-              prop: "city",
+              form: form,
+              prop: "city1",
               options: [
                 {
                   value: "选项1",
@@ -131,24 +101,17 @@ export default {
                 }
               ]
             }).then(res => {
-              console.log(res);
+              this.form.city = 123;
             });
           }
         }
       ]
     };
   },
-  components: {
-    MyTable
-  },
-  created() {},
   methods: {
-    aa(row) {
-      console.log(row);
-    }
   }
 };
 </script>
+
 <style lang="scss" scoped>
 </style>
-

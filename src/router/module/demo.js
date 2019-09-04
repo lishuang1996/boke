@@ -30,5 +30,13 @@ export default [
       title:'企业通讯录'
     },
     component: () => import('@/views/StaffManagement/AddressList.vue')
+  },
+  {
+    path: '/demo',
+    name: 'demo',
+    meta:{
+      title:'企业通讯录'
+    },
+    component: () => import('@/views/demo.vue')
   }
 ]

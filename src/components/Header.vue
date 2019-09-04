@@ -1,9 +1,9 @@
 <template>
-  <div class="flex_worp_justify_align">
+  <div class="flex_w_j_a">
     <div class="logo">
       logo
     </div>
-    <div class="user flex_worp_justify_align">
+    <div class="user flex_w_j_a">
       <div class="headerimg"></div>
       <el-dropdown trigger="click" class="user_name" @command="MenuClick">
         <span class="el-dropdown-link">
@@ -62,7 +62,7 @@ import {setUser,getUser,clearUser} from '@/../plugins/token'
     cursor: pointer;
   }
 }
-.flex_worp_justify_align{
+.flex_w_j_a{
   height: 100%;
 }
 </style>

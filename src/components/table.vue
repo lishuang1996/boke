@@ -35,7 +35,9 @@ export default {
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
           zip: 200333,
-          jy: true
+          jy: true,
+          time:'',
+          checkbox:[]
         },
         {
           date: "2016-05-02",
@@ -44,7 +46,9 @@ export default {
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
           zip: 200333,
-          jy: false
+          jy: false,
+          time:'',
+          checkbox:[]
         },
         {
           date: "2016-05-04",
@@ -53,7 +57,9 @@ export default {
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
           zip: 200333,
-          jy: true
+          jy: true,
+          time:'',
+          checkbox:[]
         },
         {
           date: "2016-05-01",
@@ -62,7 +68,9 @@ export default {
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
           zip: 200333,
-          jy: false
+          jy: false,
+          time:'',
+          checkbox:[]
         }
       ]
     };

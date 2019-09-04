@@ -27,7 +27,6 @@ router.beforeEach((to,from,next)=>{
         message: "身份已过期，请重新登录"
      });
     }else{
-      console.log(123)
       if(!to.meta.requireAuth){
         store.commit('AddTabs',to)
       }
