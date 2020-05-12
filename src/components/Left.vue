@@ -15,25 +15,27 @@
           <!-- <i class="menu_icon " :class="'menu_icon_'+item.FeaturesModuleId"></i> -->
           <span slot="title">{{item.Name}}</span>
         </template>
-        <el-menu-item-group
-          v-for="(item_,index_) in item.Children"
-          :key="index_"
-          :index="item_.Name"
-          v-if="item_.Children.length==0"
-        >
-          <el-menu-item :index="item_.harf">{{item_.Name}}</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu
-          v-for="(item_,index_) in item.Children"
-          :index="item_.Name"
-          :key="index_"
-          v-if="item_.Children.length>0"
-        >
-          <span slot="title">{{item_.Name}}</span>
-          <el-menu-item-group v-for="(item_c,index_c) in item_.Children" :index="item_c.Name" :key="index_c">
-            <el-menu-item :index="item_c.harf">{{item_c.Name}}</el-menu-item>
+        <div v-if="item_.Children.length==0">
+          <el-menu-item-group
+            v-for="(item_,index_) in item.Children"
+            :key="index_"
+            :index="item_.Name"
+          >
+            <el-menu-item :index="item_.harf">{{item_.Name}}</el-menu-item>
           </el-menu-item-group>
-        </el-submenu>
+        </div>
+        <div v-if="item_.Children.length>0">
+          <el-submenu
+            v-for="(item_,index_) in item.Children"
+            :index="item_.Name"
+            :key="index_"
+          >
+            <span slot="title">{{item_.Name}}</span>
+            <el-menu-item-group v-for="(item_c,index_c) in item_.Children" :index="item_c.Name" :key="index_c">
+              <el-menu-item :index="item_c.harf">{{item_c.Name}}</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+        </div>
       </el-submenu>
     </el-menu>
   </div>
@@ -55,7 +57,7 @@ export default {
             },
             {
               Name: "借还记录",
-              harf: "/demo",
+              harf: "/1-1",
               Children: []
             }
           ]
@@ -71,12 +73,12 @@ export default {
             },
             {
               Name: "离职员工",
-              harf: "outjob",
+              harf: "/outjob",
               Children: []
             },
             {
               Name: "企业通讯录",
-              harf: "addresslist",
+              harf: "/addresslist",
               Children: []
             }
           ]
@@ -125,6 +127,61 @@ export default {
                   Children: []
                 }
               ]
+            }
+          ]
+        },
+        {
+          Name: "表单组件展示",
+          harf: "",
+          Children: [
+            {
+              Name: "表单",
+              harf: "/demo",
+              Children: []
+            }
+          ]
+        },
+        {
+          Name: "聊天室",
+          harf: "",
+          Children: [
+            {
+              Name: "聊天室",
+              harf: "/chat",
+              Children: []
+            }
+          ]
+        },
+        {
+          Name: "数独",
+          harf: "",
+          Children: [
+            {
+              Name: "数独",
+              harf: "/sudoku",
+              Children: []
+            }
+          ]
+        },
+        {
+          Name: "three.js",
+          harf: "",
+          Children: [
+            {
+              Name: "three.js",
+              harf: "/three",
+              Children: []
+            }
+          ]
+        },
+        {
+          Name: "在线小游戏",
+          harf: "",
+          Children: [
+            {
+              Name: "五子棋",
+              harf: "/fiveinarow",
+              Children: []
             }
           ]
         },

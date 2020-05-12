@@ -34,7 +34,10 @@ import {setUser,getUser,clearUser} from '@/../plugins/token'
         if(name == 'loginout'){
           clearUser()
           sessionStorage.setItem('TabsArr','')
-          this.SetStore('DelUserData')
+          this.SetStore({
+            name:'UserData',
+            data:undefined
+          })
           this.$router.push('/')
         }
       }

@@ -1,82 +1,127 @@
 <template>
   <div>
-    <div v-for="(item,index) of arr" :key="index">
-      <mydiv v-if="item.show==false?false:true">{{item.render(form)}}</mydiv>
-    </div>
+    <Form :form="form" :FormArr="FormArr"></Form>
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
+      <span>这是一段信息</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
-
 <script>
 import Myitem from "@/assets/js/item.js";
+import Form from "@/components/Form.vue";
+import rule from "@/../plugins/rule.js";
 export default {
   data() {
     return {
-      dialogVisible: false,
       form: {
-        checkbox: [],
-        time: "",
+        food: [],
+        birthday: "",
         jy: false,
-        city: "",
-        city1: ""
+        phone: "",
+        phone1: "",
+        food1: ""
       },
-      arr: [
+      FormArr: [
         {
-          render: form => {
+          prop: "food",
+          label: "多选",
+          render:form => {
             Myitem.Checkbox_({
               form: form,
-              prop: "checkbox",
-              checkbox: [
-                {
-                  value: "黄金糕",
-                  label: "选项1"
-                },
-                {
-                  value: "双皮奶",
-                  label: "选项2",
-                  disabled: true
-                }
-              ]
+              prop: "food",
+              keyName:'keyone',
+              checkbox: []
             }).then(res => {
-              console.log(res);
             });
           }
         },
         {
-          show: false,
+          prop: "birthday",
+          label: "日期选择",
           render: form => {
             Myitem.Date_({
               form: form,
-              prop: "time"
+              prop: "birthday"
             }).then(res => {
               console.log(res);
             });
           }
         },
         {
-          render: form => {
-            Myitem.Switch_({
-              form: form,
-              prop: "jy"
-            }).then(res => {
-              this.arr[1].show = res.data;
-            });
-          }
+          prop: "jy",
+          label: "同组组件",
+          group: [
+            {
+              prop: "birthday",
+              label: "",
+              render: form => {
+                Myitem.Switch_({
+                  form: form,
+                  prop: "jy"
+                }).then(res => {
+                  console.log(this.FormArr);
+                  this.FormArr[2].group[1].show = res.data;
+                });
+              }
+            },
+            {
+              prop: "birthday",
+              label: "",
+              show: false,
+              render: form => {
+                Myitem.Date_({
+                  form: form,
+                  prop: "birthday"
+                }).then(res => {
+                  console.log(res);
+                });
+              }
+            }
+          ]
         },
         {
+          prop: "phone",
+          label: "输入框带验证",
+          rule: {
+            required: true,
+            validator: rule.Phone,
+            trigger: "blur"
+          },
           render: form => {
             Myitem.Input_({
               form: form,
-              prop: "city",
+              prop: "phone"
             }).then(res => {
-
+              console.log(res)
             });
           }
         },
         {
+          prop: "phone1",
+          label: "输入框触发弹框",
+          render: form => {
+            Myitem.Input_({
+              form: form,
+              prop: "phone1",
+              selectfn:(res)=>{
+                this.dialogVisible = true
+              }
+            }).then(res => {
+              
+            });
+          }
+        },
+        {
+          prop: "food1",
+          label: "下拉框",
           render: form => {
             Myitem.Select_({
               form: form,
-              prop: "city1",
+              prop: "food1",
               options: [
                 {
                   value: "选项1",
@@ -101,12 +146,18 @@ export default {
                 }
               ]
             }).then(res => {
-              this.form.city = 123;
+              this.form.phone = 123;
             });
           }
         }
-      ]
+      ],
+      dialogVisible: false
     };
+  },
+  components: {
+    Form
+  },
+  created(){
   },
   methods: {
   }

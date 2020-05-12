@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Vue from 'vue'
 
 let http = axios.create({
   baseURL: process.env.VUE_APP_API,
@@ -30,7 +31,6 @@ function apiAxios(method, url, params) {
       reject(err);
     })
   })
-  
 }
 
 export default apiAxios

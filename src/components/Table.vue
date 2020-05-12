@@ -89,10 +89,6 @@ export default {
     },
     goDetails(value) {
       console.log(value);
-    },
-    render(row,render) {
-      let that = this;
-      
     }
   }
 };

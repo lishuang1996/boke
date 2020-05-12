@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     UserData:undefined,
-    TabsArr:[]
+    TabsArr:[],
+    SubmitState:true
   },
   mutations: {
     SetUserData(state,data){
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     DelUserData(state){
       state.UserData = undefined
+    },
+    SetData(state,data){
+      state[data.name] = data.data
     },
     AddTabs(state,data){
       state.TabsArr = []

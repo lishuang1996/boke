@@ -15,7 +15,7 @@ export default {
               },
               on: {
                 input: (event) => {
-                  data.form[data.prop] = data.tan?'':event
+                  data.form[data.prop] = data.selectfn?'':event
                   resolve({
                     data: data.form[data.prop],
                     type: 'change'
@@ -28,7 +28,6 @@ export default {
                   })
                 },
                 focus: (event) => {
-                  console.log(123)
                   resolve({
                     data: data.form[data.prop],
                     type: 'focus'
@@ -38,7 +37,18 @@ export default {
             }, [
               data.append ? createElement("template", {
                 slot: 'append'
-              }, data.append) : ''
+              }, data.append) : '',
+              data.selectfn ? createElement("el-button", {
+                slot: 'append',
+                props:{
+                  type:'danger'
+                },
+                on: {
+                  click:(event)=>{
+                    data.selectfn()
+                  }
+                }
+              }, '选择') : ''
             ]),
             // createElement("div", {},123)
           ]);
@@ -85,7 +95,7 @@ export default {
     })
   },
   //多选
-  Checkbox_: (data) => {
+  Checkbox_: async (data) => {
     return new Promise((resolve, reject) => {
       Vue.component("mydiv", {
         functional: true,
@@ -101,7 +111,7 @@ export default {
               on: {
                 input: (event) => {
                   data.form[data.prop] = event;
-                },
+                }, 
                 change: (event) => {
                   resolve({
                     data: data.form[data.prop],
@@ -110,6 +120,7 @@ export default {
                 },
               }
             }, data.checkbox.map(item => {
+              console.log(item)
               return createElement("el-checkbox", {
                 props: {
                   label: item.label,

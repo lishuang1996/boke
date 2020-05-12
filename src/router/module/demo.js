@@ -35,8 +35,40 @@ export default [
     path: '/demo',
     name: 'demo',
     meta:{
-      title:'企业通讯录'
+      title:'from表单'
     },
     component: () => import('@/views/demo.vue')
-  }
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    meta:{
+      title:'聊天室'
+    },
+    component: () => import('@/views/chat.vue')
+  },
+  {
+    path: '/sudoku',
+    name: 'sudoku',
+    meta:{
+      title:'数独小游戏'
+    },
+    component: () => import('@/views/sudoku.vue')
+  },
+  {
+    path: '/three',
+    name: 'three',
+    meta:{
+      title:'three.js'
+    },
+    component: () => import('@/views/threejs.vue')
+  },
+  {
+    path: '/fiveinarow',
+    name: 'fiveinarow',
+    meta:{
+      title:'五子棋'
+    },
+    component: () => import('@/views/fiveinarow.vue')
+  },
 ]

@@ -1,7 +1,16 @@
 //axios引入
-// import Api from '@/../plugins/axios.js';
+import API from '@/../plugins/api.js';
 export default {
   methods: {
+    //全局接口调用
+    async httpBack(name,data){
+      let data_ = await API[name](data)
+      if (data_.code == 10000) {
+        return data_
+      } else {
+        this.$message.error(data_.msg);
+      }
+    },
     //表单提交处理
     submitForm(formName) {
       return new Promise((resolve, reject)=>{
@@ -15,11 +24,11 @@ export default {
       })
     },
     //设置vuex数据
-    SetStore(name,data){
+    SetStore(data){
       if(data){
-        this.$store.commit(name,data)
+        this.$store.commit('SetData',data)
       }else{
-        this.$store.commit(name)
+        this.$store.commit('SetData')
       }
     },
     //获取vuex数据

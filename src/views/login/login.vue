@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import {setUser,getUser} from '@/../plugins/token'
-import {login} from '@/../plugins/api.js'
+import { setUser, getUser } from "@/../plugins/token";
+import { async } from "q";
 export default {
   data() {
     return {
@@ -26,31 +26,30 @@ export default {
       }
     };
   },
-  created(){
-    this.ExistCookies()
+  created() {
+    this.ExistCookies();
   },
   methods: {
     //判断是否是否存在cookies
-    ExistCookies(){
-      if(this.$store.state.UserData){
-        this.$router.push('/home')
+    ExistCookies() {
+      if (this.$store.state.UserData) {
+        this.$router.push("/home");
       }
     },
     //登录
-    FromDispose(){
-      this.submitForm('form').then(res=>{
-        login(this.form).then(res=>{
-          if(res.code == 10000){
-            setUser(res.data)
-            this.SetStore('SetUserData',res.data)
-            this.$router.push('/home')
-            this.$message.success(res.msg);
-          }else{
-            this.$message.error(res.msg);
-          }
-          
-        })
-      })
+    FromDispose() {
+      this.submitForm("form").then(async res => {
+        let data = await this.httpBack("login", this.form);
+        if(data){
+          setUser(data.data);
+          this.SetStore({
+            name: "UserData",
+            data: data.data
+          });
+          this.$router.push("/home");
+          this.$message.success(data.msg);
+        }
+      });
     }
   }
 };

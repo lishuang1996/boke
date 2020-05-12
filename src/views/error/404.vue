@@ -1,15 +1,26 @@
 <template>
-  <div>
-    没有这个页面耶
-  </div>
+    <div>
+        鸭儿咯~页面都没求得
+    </div>
 </template>
 
 <script>
-  export default {
+import io from 'socket.io-client';
+export default {
+    data () {
+        return {
+        }
+    },
+    mounted () {
+
+    },
+    methods: {
+        
+    },
     
-  }
+}
 </script>
 
-<style lang="scss" scoped>
+<style>
 
 </style>

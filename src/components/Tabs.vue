@@ -1,7 +1,7 @@
 <template>
-  <div class="h100">
+  <div>
     <el-tabs
-      class="h100"
+      class="bigtabs"
       v-model="editableTabsValue"
       type="border-card"
       @tab-remove="removeTab"
@@ -82,7 +82,11 @@ export default {
 .el-tabs__header is-top {
   position: fixed;
 }
-.el-tabs--border-card{
+// .bigtabs>.el-tabs__content{
+//   padding: 1px;
+// }
+.bigtabs{
   border: none;
+  box-shadow:none;
 }
 </style>

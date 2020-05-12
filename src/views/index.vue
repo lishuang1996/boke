@@ -11,7 +11,9 @@
         <el-main>
           <MyTabs></MyTabs>
         </el-main>
-        <el-footer>Footer</el-footer>
+        <el-footer>
+          <MyFooter></MyFooter>
+        </el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -21,12 +23,14 @@
 import MyHeader from '@/components/Header.vue'
 import MyLeft from '@/components/Left.vue'
 import MyTabs from '@/components/Tabs.vue'
+import MyFooter from '@/components/Footer.vue'
 import {getUser} from '@/../plugins/token'
 export default {
   components:{
     MyHeader,
     MyLeft,
-    MyTabs
+    MyTabs,
+    MyFooter
   },
   created(){
     this.RecordLogin()
@@ -36,7 +40,10 @@ export default {
     RecordLogin(){
       if(!this.GetStoreState('UserData')){
         if(getUser()){
-          this.SetStore('SetUserData',getUser())
+          this.SetStore({
+            name:'UserData',
+            data:getUser()
+          })
         }else{
           this.$router.push('/')
         }
