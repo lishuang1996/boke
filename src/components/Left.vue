@@ -9,34 +9,30 @@
       :default-active="activeIndex"
       active-text-color="#ffd04b"
       :router="true"
-    >
-      <el-submenu v-for="(item,index) in menu_arr" :index="item.Name" :key="index">
+    > 
+    <div v-for="(item,index) in menu_arr" :index="item.Name" :key="index">
+      <el-submenu v-if="item.Children.length>0" :index="item.Name">
         <template slot="title">
           <!-- <i class="menu_icon " :class="'menu_icon_'+item.FeaturesModuleId"></i> -->
           <span slot="title">{{item.Name}}</span>
         </template>
-        <div v-if="item_.Children.length==0">
-          <el-menu-item-group
-            v-for="(item_,index_) in item.Children"
+        <div v-for="(item_,index_) in item.Children"
             :key="index_"
-            :index="item_.Name"
-          >
-            <el-menu-item :index="item_.harf">{{item_.Name}}</el-menu-item>
-          </el-menu-item-group>
-        </div>
-        <div v-if="item_.Children.length>0">
-          <el-submenu
-            v-for="(item_,index_) in item.Children"
-            :index="item_.Name"
-            :key="index_"
-          >
+            :index="item_.harf">
+          <el-menu-item v-if="item_.Children == 0" :index="item_.harf">{{item_.Name}}</el-menu-item>
+          <div v-if="item_.Children > 0">
+            <el-submenu>
             <span slot="title">{{item_.Name}}</span>
             <el-menu-item-group v-for="(item_c,index_c) in item_.Children" :index="item_c.Name" :key="index_c">
               <el-menu-item :index="item_c.harf">{{item_c.Name}}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+          </div>
         </div>
       </el-submenu>
+      <el-menu-item v-if="item.Children.length==0" :index="item.Name">{{item.Name}}</el-menu-item>
+    </div>
+      
     </el-menu>
   </div>
 </template>
@@ -47,86 +43,13 @@ export default {
     return {
       menu_arr: [
         {
-          Name: "常用功能",
+          Name: "文章列表",
           harf: "",
           Children: [
             {
-              Name: "我的审批",
-              harf: "/Study",
+              Name: "公众号文章",
+              harf: "/news",
               Children: []
-            },
-            {
-              Name: "借还记录",
-              harf: "/1-1",
-              Children: []
-            }
-          ]
-        },
-        {
-          Name: "员工管理",
-          harf: "",
-          Children: [
-            {
-              Name: "在职员工",
-              harf: "/onjob",
-              Children: []
-            },
-            {
-              Name: "离职员工",
-              harf: "/outjob",
-              Children: []
-            },
-            {
-              Name: "企业通讯录",
-              harf: "/addresslist",
-              Children: []
-            }
-          ]
-        },
-        {
-          Name: "证书管理",
-          harf: "",
-          Children: [
-            {
-              Name: "企业证书",
-              harf: "/Study",
-              Children: []
-            },
-            {
-              Name: "数字证书",
-              harf: "2-2",
-              Children: []
-            },
-            {
-              Name: "人员证书",
-              harf: "2-3",
-              Children: []
-            },
-            {
-              Name: "证书文件柜",
-              harf: "2-4",
-              Children: []
-            },
-            {
-              Name: "考试管理",
-              harf: "2-5",
-              Children: []
-            },
-            {
-              Name: "职能匹配",
-              harf: "2-6",
-              Children: [
-                {
-                  Name: "人员智能匹配",
-                  harf: "2-6-1",
-                  Children: []
-                },
-                {
-                  Name: "人员匹配",
-                  harf: "2-6-2",
-                  Children: []
-                }
-              ]
             }
           ]
         },
