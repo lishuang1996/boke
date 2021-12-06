@@ -71,4 +71,36 @@ export default [
     },
     component: () => import('@/views/fiveinarow.vue')
   },
+  {
+    path: '/baseData',
+    name: 'baseData',
+    meta:{
+      title:'基础数据'
+    },
+    component: () => import('@/views/baseData/index.vue')
+  },
+  {
+    path: '/bingrole',
+    name: 'bingrole',
+    meta:{
+      title:'审核列表'
+    },
+    component: () => import('@/views/bingrole/index.vue')
+  },
+  {
+    path: '/user',
+    name: 'user',
+    meta:{
+      title:'用户列表'
+    },
+    component: () => import('@/views/user/index.vue')
+  },
+  {
+    path: '/news',
+    name: 'news',
+    meta:{
+      title:'新闻列表'
+    },
+    component: () => import('@/views/news/index.vue')
+  },
 ]

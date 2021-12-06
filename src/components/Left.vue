@@ -43,71 +43,49 @@ export default {
     return {
       menu_arr: [
         {
-          Name: "文章列表",
+          Name: "用户管理",
           harf: "",
           Children: [
             {
-              Name: "公众号文章",
+              Name: "用户列表",
+              harf: "/user",
+              Children: []
+            }
+          ]
+        },
+        {
+          Name: "资讯管理",
+          harf: "",
+          Children: [
+            {
+              Name: "资讯列表",
               harf: "/news",
               Children: []
             }
           ]
         },
         {
-          Name: "表单组件展示",
+          Name: "绑定角色管理",
           harf: "",
           Children: [
             {
-              Name: "表单",
-              harf: "/demo",
+              Name: "审核列表",
+              harf: "/bingrole",
               Children: []
             }
           ]
         },
         {
-          Name: "聊天室",
+          Name: "基础数据",
           harf: "",
           Children: [
             {
-              Name: "聊天室",
-              harf: "/chat",
+              Name: "基础数据列表",
+              harf: "/baseData",
               Children: []
             }
           ]
-        },
-        {
-          Name: "数独",
-          harf: "",
-          Children: [
-            {
-              Name: "数独",
-              harf: "/sudoku",
-              Children: []
-            }
-          ]
-        },
-        {
-          Name: "three.js",
-          harf: "",
-          Children: [
-            {
-              Name: "three.js",
-              harf: "/three",
-              Children: []
-            }
-          ]
-        },
-        {
-          Name: "在线小游戏",
-          harf: "",
-          Children: [
-            {
-              Name: "五子棋",
-              harf: "/fiveinarow",
-              Children: []
-            }
-          ]
-        },
+        }
       ],
       activeIndex:''
     };

@@ -12,7 +12,7 @@
           <MyTabs></MyTabs>
         </el-main>
         <el-footer>
-          <MyFooter></MyFooter>
+          <!-- <MyFooter></MyFooter> -->
         </el-footer>
       </el-container>
     </el-container>
