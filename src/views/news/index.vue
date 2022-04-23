@@ -55,7 +55,7 @@
         </el-pagination>
         <el-dialog title="添加新闻" :visible.sync="dialogTableVisible" :close-on-click-modal="false">
             <div style="margin-bottom:20px">
-                <el-upload class="avatar-uploader" action="https://127.0.0.1/api/Upimg" :show-file-list="false"
+                <el-upload class="avatar-uploader" action="https://www.lishuang96.com/api/Upimg" :show-file-list="false"
                     :on-success="handleAvatarSuccess">
                     <img v-if="addData.image" :src="addData.image" class="avatar">
                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
